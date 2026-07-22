@@ -1,247 +1,353 @@
-# 🌍 PayLink - Plateforme Africaine de Paiement Numérique
+# PayLink - Plateforme de Paiement en Ligne
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-blue.svg)](https://www.postgresql.org/)
-[![Flutter](https://img.shields.io/badge/Flutter-3.0+-blue.svg)](https://flutter.dev/)
+PayLink est une plateforme de paiement en ligne sécurisée et moderne adaptée à l'Afrique de l'Ouest, permettant l'achat de services digitaux (comptes streaming, IA, jeux PC, cartes cadeaux, etc.).
 
-## 📖 Description
+## 🚀 Caractéristiques
 
-**PayLink** est une plateforme de paiement numérique nouvelle génération qui permet aux particuliers et aux entreprises d'accéder facilement aux services et produits numériques internationaux sans avoir besoin d'une carte bancaire internationale.
+### Fonctionnalités principales
+- **Catalogue de produits** : Streaming, IA, jeux PC, cartes cadeaux
+- **Système de paiement multi-fournisseur** : Stripe, Flutterwave, Paystack, Mobile Money, Cash
+- **Gestion des commandes** : Création, suivi et historique des commandes
+- **Système de support** : Tickets de support avec priorités
+- **FAQ complète** : Base de connaissance avec recherche
+- **Dashboard utilisateur** : Vue d'ensemble des commandes et paiements
+- **Admin panel** : Gestion des paramètres, logs, statistiques
+- **Notifications** : Push, Email, SMS
 
-Disponible sur **Android**, **iOS** et **Web**, PayLink offre une expérience fluide, moderne et sécurisée pour les paiements numériques en Afrique.
-
-## 🎯 Objectif
-
-Devenir la référence africaine des paiements numériques internationaux en proposant une plateforme unique regroupant :
-
-- 🎬 Abonnements streaming (Netflix, Disney+, Spotify, etc.)
-- 🤖 Services IA (ChatGPT, Gemini, Claude, Midjourney, etc.)
-- 🎨 Outils créatifs (Canva, Adobe, CapCut, etc.)
-- 📦 Productivité (Microsoft 365, Google One, Slack, etc.)
-- 🎮 Jeux & recharges (Steam, PlayStation, PUBG Mobile, etc.)
-- 🎁 Cartes cadeaux (Google Play, Apple, Steam, etc.)
-- 🛍️ Boutiques internationales (Amazon, AliExpress, SHEIN, etc.)
-
-## 🏗️ Architecture
-
-### Structure du Projet
+## 📁 Structure du projet
 
 ```
 PayLink/
-├── backend/                          # API NestJS
+├── backend/                  # API NestJS
 │   ├── src/
-│   │   ├── auth/                     # Authentification & JWT
-│   │   ├── users/                    # Gestion des utilisateurs
-│   │   ├── products/                 # Catalogue des produits
-│   │   ├── orders/                   # Système de commandes
-│   │   ├── payments/                 # Intégration paiements
-│   │   ├── admin/                    # Dashboard administrateur
-│   │   ├── support/                  # Centre de support
-│   │   ├── notifications/            # Notifications (FCM)
-│   │   ├── ai-assistant/             # Assistant IA
-│   │   ├── common/                   # Utilitaires & middleware
-│   │   └── main.ts
-│   ├── test/
-│   ├── docker-compose.yml
-│   ├── .env.example
-│   └── package.json
-│
-├── web/                              # Frontend Web (Vue 3)
+│   │   ├── auth/            # Authentification
+│   │   ├── users/           # Gestion des utilisateurs
+│   │   ├── products/        # Catalogue de produits
+│   │   ├── orders/          # Gestion des commandes
+│   │   ├── payments/        # Système de paiement
+│   │   ├── support/         # Tickets de support
+│   │   ├── faq/             # FAQ
+│   │   ├── admin/           # Panel administrateur
+│   │   ├── notifications/   # Notifications
+│   │   └── common/          # Utilitaires
+│   ├── package.json
+│   └── docker-compose.yml
+├── web/                      # Frontend Vue 3
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── views/
-│   │   ├── store/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   ├── styles/
-│   │   └── App.vue
-│   ├── .env.example
-│   └── package.json
-│
-├── flutter/                          # Application Mobile (Flutter)
-│   ├── lib/
-│   │   ├── models/
-│   │   ├── screens/
-│   │   ├── widgets/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   ├── providers/
-│   │   └── main.dart
-│   ├── pubspec.yaml
-│   └── .env.example
-│
-├── docs/                             # Documentation
-│   ├── API.md
-│   ├── ARCHITECTURE.md
-│   ├── SETUP.md
-│   ├── DEPLOYMENT.md
-│   └── DATABASE_SCHEMA.md
-│
-├── scripts/                          # Scripts d'administration
-│   ├── setup-db.sql
-│   ├── seed-data.ts
-│   └── deploy.sh
-│
-└── .github/
-    └── workflows/                    # CI/CD
-        ├── backend-tests.yml
-        └── deploy.yml
+│   │   ├── pages/           # Pages
+│   │   ├── components/      # Composants
+│   │   ├── stores/          # Stores Pinia
+│   │   ├── router/          # Routeur
+│   │   ├── services/        # Services API
+│   │   └── style.css        # Styles
+│   ├── package.json
+│   └── vite.config.js
+├── docs/                     # Documentation
+├── docker-compose.yml        # Orchestration Docker
+└── README.md
 ```
 
-## 🚀 Démarrage Rapide
-
-### Prérequis
-
-- **Node.js** 18+ & npm/yarn
-- **PostgreSQL** 14+
-- **Docker** & Docker Compose (optionnel)
-- **Flutter** 3.0+ (pour mobile)
-- **Git**
-
-### Installation Backend
-
-```bash
-cd backend
-cp .env.example .env
-npm install
-npm run start:dev
-```
-
-### Installation Frontend Web
-
-```bash
-cd web
-cp .env.example .env
-npm install
-npm run dev
-```
-
-### Installation Mobile (Flutter)
-
-```bash
-cd flutter
-cp .env.example .env
-flutter pub get
-flutter run
-```
-
-## 📚 Documentation
-
-- [API Documentation](./docs/API.md)
-- [Architecture](./docs/ARCHITECTURE.md)
-- [Guide Setup](./docs/SETUP.md)
-- [Schéma Base de Données](./docs/DATABASE_SCHEMA.md)
-- [Déploiement](./docs/DEPLOYMENT.md)
-
-## 🔒 Sécurité
-
-- ✅ Authentification JWT
-- ✅ Authentification 2FA (TOTP)
-- ✅ Chiffrement des données sensibles
-- ✅ Rate limiting
-- ✅ Protection CORS
-- ✅ Validation des entrées
-- ✅ Gestion des permissions par rôle
-
-## 👤 Admin Initial
-
-- **Nom** : Codjia Winner
-- **Email** : codjia55@gmail.com
-- **Téléphone** : +2290161069793
-- **Pays** : Bénin
-
-## 🛠️ Technologies
+## 🛠️ Stack Technique
 
 ### Backend
 - **Framework** : NestJS
-- **Runtime** : Node.js
 - **Base de données** : PostgreSQL
-- **Cache** : Redis
-- **Auth** : JWT + 2FA (TOTP)
+- **ORM** : TypeORM
+- **Authentification** : JWT
+- **Validation** : Class-validator
+- **Cache** : Redis (optionnel)
 
-### Frontend Web
+### Frontend
 - **Framework** : Vue 3
-- **Build Tool** : Vite
+- **Build** : Vite
 - **State Management** : Pinia
+- **Styling** : Tailwind CSS
 - **HTTP Client** : Axios
-- **UI Components** : Headless UI / Tailwind CSS
+- **Routing** : Vue Router
 
-### Mobile
-- **Framework** : Flutter
-- **State Management** : Riverpod
-- **HTTP Client** : Dio
-- **Local Storage** : Hive
+## 📋 Prérequis
 
-### DevOps
-- **Containerization** : Docker
-- **Orchestration** : Docker Compose
-- **CI/CD** : GitHub Actions
-- **Cloud** : À définir (AWS, Heroku, DigitalOcean)
+- Node.js 18+
+- PostgreSQL 12+
+- Docker & Docker Compose (optionnel)
+- npm ou yarn
 
-## 💰 Configuration Initiale
+## 🚀 Installation
 
-- **Devise** : XOF (Franc CFA)
-- **Pays principal** : Bénin
-- **Langues** : Français, Anglais
-- **Domaine** : paylink.app
+### Option 1: Installation locale
 
-## 📱 Fonctionnalités Principales
+#### Backend
 
-### Pour les Utilisateurs
-- ✅ Création de compte (email/téléphone)
-- ✅ Authentification sécurisée
-- ✅ Profil personnalisable
-- ✅ Catalogue intelligent
-- ✅ Recherche avancée
-- ✅ Création de commandes
-- ✅ Paiements sécurisés
-- ✅ Suivi en temps réel
-- ✅ Support client
-- ✅ Assistant IA
+```bash
+cd backend
+npm install
 
-### Pour les Administrateurs
-- ✅ Dashboard analytique
-- ✅ Gestion des utilisateurs
-- ✅ Gestion du catalogue
-- ✅ Gestion des commandes
-- ✅ Gestion des paiements
-- ✅ Gestion des employés
-- ✅ Rapports financiers
-- ✅ Gestion des promotions
+# Créer un fichier .env
+cp .env.example .env
 
-## 📊 Paiements Supportés
+# Configurer la base de données
+# Éditer .env avec vos paramètres PostgreSQL
 
-À intégrer :
-- 💳 Stripe
-- 💳 Flutterwave
-- 💳 Paystack
-- 💵 Mobile Money (Orange Money, MTN Money, etc.)
-- 💸 Espèces via agents partenaires
+# Lancer les migrations
+npm run migration:run
 
-## 🤝 Contribution
+# Démarrer le serveur
+npm run start:dev
+```
 
-Pour contribuer au projet :
+#### Frontend
 
-1. Créer une branche (`git checkout -b feature/AmazingFeature`)
-2. Commiter vos changements (`git commit -m 'Add some AmazingFeature'`)
-3. Pousser la branche (`git push origin feature/AmazingFeature`)
-4. Ouvrir une Pull Request
+```bash
+cd web
+npm install
+
+# Créer un fichier .env
+cp .env.example .env
+
+# Démarrer le serveur de développement
+npm run dev
+```
+
+### Option 2: Installation avec Docker
+
+```bash
+docker-compose up -d
+```
+
+## 📝 Variables d'environnement
+
+### Backend (.env)
+
+```env
+# Database
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_USER=paylink
+DATABASE_PASSWORD=your_password
+DATABASE_NAME=paylink_db
+
+# JWT
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRATION=7d
+
+# API
+API_URL=http://localhost:3000
+FRONTEND_URL=http://localhost:5173
+
+# Payment Providers
+STRIPE_API_KEY=your_stripe_key
+FLUTTERWAVE_API_KEY=your_flutterwave_key
+PAYSTACK_API_KEY=your_paystack_key
+
+# Email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email
+SMTP_PASSWORD=your_password
+```
+
+### Frontend (.env)
+
+```env
+VITE_API_URL=http://localhost:3000/api/v1
+VITE_APP_NAME=PayLink
+VITE_APP_VERSION=1.0.0
+```
+
+## 🔐 Authentification
+
+L'application utilise JWT pour l'authentification. Les tokens sont stockés dans le localStorage du navigateur.
+
+### Endpoints d'authentification
+
+```
+POST   /api/v1/auth/register   - Inscription
+POST   /api/v1/auth/login      - Connexion
+POST   /api/v1/auth/logout     - Déconnexion
+POST   /api/v1/auth/refresh    - Rafraîchir le token
+```
+
+## 📦 Modules Backend
+
+### Auth Module
+Gestion de l'authentification et autorisation.
+
+```
+GET    /api/v1/auth/me         - Informations utilisateur
+POST   /api/v1/auth/login      - Connexion
+POST   /api/v1/auth/register   - Inscription
+```
+
+### Products Module
+Gestion du catalogue de produits.
+
+```
+GET    /api/v1/products        - Lister les produits
+GET    /api/v1/products/:id    - Détails du produit
+POST   /api/v1/products        - Créer un produit (admin)
+PUT    /api/v1/products/:id    - Modifier un produit (admin)
+DELETE /api/v1/products/:id    - Supprimer un produit (admin)
+```
+
+### Orders Module
+Gestion des commandes.
+
+```
+GET    /api/v1/orders         - Mes commandes
+GET    /api/v1/orders/:id     - Détails de la commande
+POST   /api/v1/orders         - Créer une commande
+PUT    /api/v1/orders/:id     - Modifier une commande
+```
+
+### Payments Module
+Gestion des paiements.
+
+```
+POST   /api/v1/payments/initiate     - Initier un paiement
+POST   /api/v1/payments/confirm      - Confirmer un paiement
+GET    /api/v1/payments/:id          - Détails du paiement
+GET    /api/v1/payments              - Mes paiements
+```
+
+### Support Module
+Gestion des tickets de support.
+
+```
+GET    /api/v1/support/tickets      - Mes tickets
+GET    /api/v1/support/tickets/:id  - Détails du ticket
+POST   /api/v1/support/tickets      - Créer un ticket
+PUT    /api/v1/support/tickets/:id  - Mettre à jour un ticket
+```
+
+### FAQ Module
+Gestion de la FAQ.
+
+```
+GET    /api/v1/faq              - Lister les FAQs
+GET    /api/v1/faq/search       - Rechercher dans les FAQs
+GET    /api/v1/faq/:id          - Détails de la FAQ
+POST   /api/v1/faq/:id/helpful  - Marquer comme utile
+```
+
+### Admin Module
+Panel administrateur.
+
+```
+GET    /api/v1/admin/dashboard  - Tableau de bord
+GET    /api/v1/admin/logs       - Logs d'activité
+GET    /api/v1/admin/settings   - Paramètres
+PUT    /api/v1/admin/settings/:key - Modifier un paramètre
+```
+
+## 🎨 Pages Frontend
+
+- **Home** (`/`) - Accueil avec categories
+- **Products** (`/products`) - Catalogue de produits
+- **Product Detail** (`/products/:id`) - Détails du produit
+- **Login** (`/login`) - Connexion
+- **Register** (`/register`) - Inscription
+- **Dashboard** (`/dashboard`) - Tableau de bord (authentifié)
+- **Orders** (`/orders`) - Mes commandes (authentifié)
+- **Order Detail** (`/orders/:id`) - Détails de la commande (authentifié)
+- **Payments** (`/payments`) - Mes paiements (authentifié)
+- **Support** (`/support`) - Support (authentifié)
+- **FAQ** (`/faq`) - FAQ
+- **Profile** (`/profile`) - Mon profil (authentifié)
+
+## 📊 Base de données
+
+### Tables principales
+
+- **users** - Utilisateurs
+- **products** - Produits
+- **product_variants** - Variantes de produits
+- **orders** - Commandes
+- **payments** - Paiements
+- **support_tickets** - Tickets de support
+- **faqs** - FAQs
+- **admin_logs** - Logs administrateur
+- **settings** - Paramètres
+
+## 🧪 Tests
+
+### Backend
+
+```bash
+cd backend
+
+# Tests unitaires
+npm run test
+
+# Tests e2e
+npm run test:e2e
+
+# Coverage
+npm run test:cov
+```
+
+### Frontend
+
+```bash
+cd web
+
+# Tests
+npm run test
+```
+
+## 📦 Build et Deployment
+
+### Backend
+
+```bash
+cd backend
+npm run build
+```
+
+### Frontend
+
+```bash
+cd web
+npm run build
+```
+
+## 🚀 Déploiement
+
+### Avec Docker
+
+```bash
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Avec Heroku
+
+```bash
+heroku create paylink-api
+git push heroku main
+```
+
+## 📞 Support et Contribution
+
+Pour toute question ou contribution, veuillez consulter la section Support ou créer une issue sur GitHub.
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
 
-## 📞 Contact
+## 👥 Auteurs
 
-**PayLink**
-- 📧 Email : codjia55@gmail.com
-- 🌐 Site : paylink.app
-- 📱 Téléphone : +2290161069793
-- 🇧🇯 Localisation : Bénin
+- **win-shousha** - Développement initial
+
+## 🗓️ Changelog
+
+### v1.0.0 (22 Juillet 2024)
+- Version initiale
+- Fonctionnalités de base
+- Authentication
+- Gestion des commandes
+- Système de paiement
+- Support client
+- FAQ
 
 ---
 
-**Dernière mise à jour** : 2026-07-22
-**Version** : 1.0.0 - BETA
+**Made with ❤️ in West Africa**
